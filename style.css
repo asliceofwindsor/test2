@@ -525,3 +525,16 @@ header {
     height: 40px;              /* adjust thickness */
     background-color: #8B4531; /* or your theme colour */
 }
+.pdf-button {
+  display: inline-block;
+  padding: 10px 16px;
+  background-color: #8b0000;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.pdf-button:hover {
+  background-color: #a00000;
+}
