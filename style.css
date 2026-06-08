@@ -525,6 +525,10 @@ header {
     height: 40px;              /* adjust thickness */
     background-color: #8B4531; /* or your theme colour */
 }
+.spacer-bar {
+    width: 100%;
+    height: 40px;              /* adjust thickness */
+}
 .pdf-button {
   display: inline-block;
   padding: 10px 16px;
