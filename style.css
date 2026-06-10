@@ -542,3 +542,13 @@ header {
 .pdf-button:hover {
   background-color: #a00000;
 }
+.bibliography {
+  max-width: 900px;
+  line-height: 1.6;
+}
+
+.bibliography-item {
+  margin-bottom: 10px;
+  padding-left: 1.5em;
+  text-indent: -1.5em; /* hanging indent */
+}
