@@ -106,16 +106,25 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* MOBILE NAV */
 @media (max-width: 900px) {
+    nav ul {
+        flex-wrap: wrap;
+    }
+
     nav li {
-        min-width: 100%;
-        border-right: none;
-        border-bottom: 2px solid black;
+        min-width: auto;
+        flex: 1 1 auto;
+        border-right: 2px solid black;
+        border-bottom: none;
     }
 
     nav li:first-child {
-        margin-right: 0;
+        margin-right: auto;
+    }
+
+    nav a {
+        white-space: nowrap;
+        padding: 10px;
     }
 }
 
