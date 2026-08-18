@@ -410,7 +410,7 @@ header {
     top: 0;
     z-index: 1000;
 }
-
+ 
 @media (max-width: 900px) {
     .site-header {
         position: static;
