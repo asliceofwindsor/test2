@@ -29,24 +29,35 @@ html {
 }
 
 body {
-    margin: 0;        /* IMPORTANT: removes side gaps */
+    margin: 0;
     padding: 0;
     background-color: #fff;
     text-align: left;
 }
 
 /* =========================
-   FULL WIDTH HEADER SYSTEM
+   TOP SPACER BAR
+========================= */
+.top-spacer-bar {
+    width: 100%;
+    height: 40px;
+    background-color: #8B4531;
+}
+
+.spacer-bar {
+    width: 100%;
+    height: 40px;
+}
+
+/* =========================
+   HEADER / BANNER
 ========================= */
 header {
     width: 100%;
     margin: 0;
     padding: 0;
-
-    border-radius: 0; /* prevents “boxed” look */
+    border-radius: 0;
 }
-
-/* Banner FULL BLEED */
 
 .banner-img {
     width: 100%;
@@ -54,32 +65,39 @@ header {
     display: block;
 }
 
-
-
-
-/* NAV FULL BLEED */
-nav {
-    width: 100vw;
+/* =========================
+   NAVIGATION
+   STAYS HORIZONTAL
+========================= */
+.site-header {
+    width: 100%;
     margin: 0;
-
     background-color: #8B4531;
     border-top: 4px solid black;
     border-bottom: 4px solid black;
 
-    margin-left: calc(50% - 50vw);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
-nav ul {
+.site-header ul {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+
     list-style: none;
     margin: 0;
     padding: 0;
-    width: 100%;
+
+    min-width: 1200px;
 }
 
-nav li {
-    flex: 1;
+.site-header li {
+    flex: 1 0 auto;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,30 +105,45 @@ nav li {
     border-right: 2px solid black;
 }
 
-nav li:first-child {
-    margin-right: auto;
+.site-header li:first-child {
     font-weight: bold;
 }
 
-nav a {
+.site-header a {
     display: block;
     width: 100%;
-    text-align: center;
 
+    text-align: center;
     text-decoration: none;
     color: white;
     font-weight: 700;
+
+    white-space: nowrap;
 }
 
-nav a:hover {
+.site-header a:hover {
     text-decoration: underline;
 }
 
+/* Logo inside navbar */
+.logo-link {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-logo {
+    width: 94px;
+    height: 94px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
 
 /* =========================
-   MAIN LAYOUT CONTAINER
+   MAIN SECTION LAYOUT
 ========================= */
-header,
 section {
     width: min(95em, 100%);
     margin: 2rem auto;
@@ -121,7 +154,7 @@ section {
 }
 
 /* =========================
-   FLEX LAYOUT BASE
+   FLEX LAYOUT
 ========================= */
 .flex-container {
     display: flex;
@@ -133,6 +166,7 @@ section {
 
 .text-container {
     flex: 1;
+    min-width: 0;
 }
 
 /* =========================
@@ -140,19 +174,20 @@ section {
 ========================= */
 h1 {
     font-size: 2.5rem;
-    color: #393939
+    color: #393939;
 }
 
 h2 {
     margin-bottom: 10px;
-  font-family: 'Times', Times, serif;
-  font-weight: bold;
-  color: #393939;
+    font-family: 'Times', Times, serif;
+    font-weight: bold;
+    color: #393939;
 }
 
 .text-container p {
     margin: 0.75em 0 1em;
     font-size: 1.25rem;
+    line-height: 1.5;
 }
 
 /* =========================
@@ -161,6 +196,7 @@ h2 {
 .cta-button {
     display: inline-block;
     text-decoration: none;
+    text-align: center;
 
     color: white;
     background-color: var(--primary-color);
@@ -179,7 +215,52 @@ h2 {
 ========================= */
 .side-image {
     width: 300px;
+    max-width: 100%;
     height: auto;
+}
+
+/* =========================
+   IMAGE COLUMN SYSTEM
+========================= */
+.image-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    max-width: 320px;
+}
+
+.image-block {
+    margin-bottom: 2em;
+    max-width: 100%;
+}
+
+.image-block img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 1em;
+}
+
+.caption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* =========================
+   EARLY IMMIGRATION SECTION
+========================= */
+.Early-Immigration .side-image {
+    width: 320px;
+    max-width: 100%;
+    border-radius: 1em;
+}
+
+.Early-Immigration .caption {
+    font-size: 0.9rem;
+    margin-top: 10px;
 }
 
 /* =========================
@@ -190,7 +271,6 @@ h2 {
     background-color: #f6ecd2;
     border: 10px solid #396d05;
     border-radius: 1em;
-
     text-align: center;
 }
 
@@ -200,7 +280,9 @@ h2 {
     color: var(--primary-color);
 }
 
-/* SVG */
+/* =========================
+   SVG
+========================= */
 svg {
     display: block;
 }
@@ -236,6 +318,7 @@ svg {
     justify-content: center;
     align-items: flex-start;
     gap: 3em;
+
     flex-wrap: nowrap;
 }
 
@@ -250,14 +333,16 @@ svg {
 .pizza-overlay {
     position: absolute;
     inset: 0;
+
     width: 100%;
     height: 100%;
 }
 
-/* INFO PANEL */
+/* =========================
+   INFO PANEL
+========================= */
 .info-panel {
     flex: 0 1 400px;
-    background-color: var(--color-2);
     padding: 1.5em;
     border-radius: 1em;
 }
@@ -273,46 +358,7 @@ svg {
 }
 
 /* =========================
-   EARLY IMMIGRATION SECTION
-========================= */
-.Early-Immigration .side-image {
-    width: 320px;
-    border-radius: 1em;
-}
-
-.Early-Immigration .caption {
-    font-size: 0.9rem;
-    margin-top: 10px;
-}
-
-/* =========================
-   IMAGE COLUMN SYSTEM
-========================= */
-.image-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 320px;
-}
-
-.image-block {
-    margin-bottom: 2em;
-}
-
-.image-block img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 1em;
-}
-
-.caption {
-    margin-top: 10px;
-    font-size: 0.9rem;
-}
-
-/* =========================
-   FINAL SECTION OVERRIDES
+   FINAL SECTION
 ========================= */
 .final-section .flex-container {
     align-items: stretch;
@@ -329,7 +375,7 @@ svg {
 }
 
 /* =========================
-   SECTION 10 LAYOUT
+   SECTION 10
 ========================= */
 .section10-container {
     display: flex;
@@ -345,6 +391,7 @@ svg {
     display: flex;
     flex-direction: row;
     gap: 25px;
+
     flex: 1.6;
     max-width: none;
 }
@@ -358,50 +405,35 @@ svg {
 }
 
 /* =========================
-   FULL BLEED HEADER FIX
+   SCROLLING / LINES
 ========================= */
-header {
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-
-    margin-left: calc(50% - 50vw);
-}
-
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-@media (max-width: 900px) {
-    .site-header {
-        position: static;
-    }
-}
- 
-
-}
 .intro-section {
     scroll-margin-top: 140px;
 }
+
 .scroll-spacer {
-    height: 100px; /* match your sticky header height */
+    height: 100px;
 }
+
 .scroll-spacer1 {
-    height: 25px; /* match your sticky header height */
+    height: 25px;
 }
+
 .header-line {
     height: 2px;
     background: #8B4531;
     width: 100%;
 }
 
+/* =========================
+   FOOTER
+========================= */
 .site-footer {
     background-color: #f6ecd2;
     color: #000;
-        padding: 60px 40px 20px;
+
+    padding: 60px 40px 20px;
+
     font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
     border-top: 2px solid #8B4531;
 }
@@ -409,8 +441,10 @@ header {
 .footer-container {
     display: flex;
     justify-content: space-between;
+
     gap: 40px;
     max-width: 1200px;
+
     margin: 0 auto;
     flex-wrap: wrap;
 }
@@ -457,9 +491,11 @@ header {
     margin-top: 40px;
     font-size: 12px;
     color: #444;
+
     border-top: 1px solid #ddd;
     padding-top: 15px;
 }
+
 .footer-funding {
     text-align: center;
     font-size: 11px;
@@ -473,9 +509,11 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+
     gap: 40px;
     margin-top: 20px;
     padding-top: 20px;
+
     border-top: 1px solid #ddd;
     flex-wrap: wrap;
 }
@@ -483,7 +521,9 @@ header {
 .footer-logo {
     height: 100px;
     width: auto;
+    max-width: 100%;
     object-fit: contain;
+
     opacity: 0.9;
     transition: opacity 0.2s ease;
 }
@@ -491,21 +531,10 @@ header {
 .footer-logo:hover {
     opacity: 1;
 }
-/* Logo inside navbar */
-.logo-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
 
-.nav-logo{
-    width: 94px;
-    height: 94px;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
-}
+/* =========================
+   SECTION NAV
+========================= */
 .section-nav {
     display: flex;
     justify-content: center;
@@ -513,46 +542,49 @@ header {
     margin-top: 40px;
 }
 
-.cta-button {
-    display: inline-block;
-    text-align: center;
-}
-.top-spacer-bar {
-    width: 100%;
-    height: 40px;              /* adjust thickness */
-    background-color: #8B4531; /* or your theme colour */
-}
-.spacer-bar {
-    width: 100%;
-    height: 40px;              /* adjust thickness */
-}
+/* =========================
+   PDF BUTTON
+========================= */
 .pdf-button {
-  display: inline-block;
-  padding: 10px 16px;
-  background-color: #8b0000;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
+    display: inline-block;
+
+    padding: 10px 16px;
+    background-color: #8b0000;
+    color: white;
+
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
 }
 
 .pdf-button:hover {
-  background-color: #a00000;
+    background-color: #a00000;
 }
+
+/* =========================
+   BIBLIOGRAPHY
+========================= */
 .bibliography {
-  max-width: 900px;
-  line-height: 1.6;
+    max-width: 900px;
+    line-height: 1.6;
 }
 
 .bibliography-item {
-  margin-bottom: 10px;
-  padding-left: 1.5em;
-  text-indent: -1.5em; /* hanging indent */
+    margin-bottom: 10px;
+
+    padding-left: 1.5em;
+    text-indent: -1.5em;
 }
+
+/* =========================
+   VIDEO
+========================= */
 .video-section {
     max-width: 1000px;
+
     margin: 50px auto;
     padding: 20px;
+
     text-align: center;
 }
 
@@ -560,6 +592,7 @@ header {
     width: 100%;
     max-width: 900px;
     height: auto;
+
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
@@ -567,5 +600,150 @@ header {
 .video-caption {
     margin-top: 15px;
     font-style: italic;
+}
+
+/* ==========================================================
+   MOBILE
+   TEXT AND IMAGES ADAPT
+   NAVIGATION IS NOT REARRANGED
+========================================================== */
+
+@media (max-width: 900px) {
+
+    /* -------------------------
+       SECTIONS
+    ------------------------- */
+    section {
+        width: 100%;
+        max-width: 100%;
+
+        margin: 1rem auto;
+        padding: 20px;
+
+        border-radius: 0;
+    }
+
+    /* -------------------------
+       IMAGE + TEXT
+    ------------------------- */
+    .flex-container {
+        width: 100%;
+
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .text-container {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+    }
+
+    .text-container p {
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 1.1rem;
+
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    /* -------------------------
+       IMAGES
+    ------------------------- */
+    .image-column {
+        width: 100%;
+        max-width: 100%;
+
+        align-items: center;
+    }
+
+    .image-block {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .image-block img,
+    .side-image,
+    .Early-Immigration .side-image {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+    }
+
+    .caption {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    /* -------------------------
+       PIZZA SECTION
+    ------------------------- */
+    .pizza-layout {
+        width: 100%;
+
+        flex-direction: column;
+        align-items: center;
+
+        gap: 1.5em;
+    }
+
+    .pizza-container {
+        width: 90vw;
+        max-width: 500px;
+    }
+
+    .info-panel {
+        width: 100%;
+        max-width: 500px;
+        flex: none;
+    }
+
+    /* -------------------------
+       SECTION 10
+    ------------------------- */
+    .section10-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .section10-container .image-column {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* -------------------------
+       FINAL SECTION
+    ------------------------- */
+    .final-section .image-column {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* -------------------------
+       FOOTER
+    ------------------------- */
+    .site-footer {
+        padding: 40px 20px 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .footer-column {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .footer-logo {
+        max-width: 100%;
+        height: auto;
+    }
 }
 
