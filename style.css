@@ -107,14 +107,39 @@ nav a:hover {
 }
 
 @media (max-width: 900px) {
+
+    .site-header {
+        position: static;
+    }
+
+    nav ul {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
     nav li {
-        min-width: 100%;
-        border-right: none;
-        border-bottom: 2px solid black;
+        flex: 0 0 auto;
+        min-width: auto;
+        border-right: 2px solid black;
+        border-bottom: none;
+        white-space: nowrap;
     }
 
     nav li:first-child {
         margin-right: 0;
+    }
+
+    nav a {
+        padding: 10px 14px;
+    }
+
+    .nav-logo {
+        width: 70px;
+        height: 70px;
     }
 }
 
@@ -384,6 +409,12 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+@media (max-width: 900px) {
+    .site-header {
+        position: static;
+    }
 }
 .intro-section {
     scroll-margin-top: 140px;
