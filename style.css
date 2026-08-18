@@ -107,24 +107,14 @@ nav a:hover {
 }
 
 @media (max-width: 900px) {
-    nav ul {
-        flex-wrap: wrap;
-    }
-
     nav li {
-        min-width: auto;
-        flex: 1 1 auto;
-        border-right: 2px solid black;
-        border-bottom: none;
+        min-width: 100%;
+        border-right: none;
+        border-bottom: 2px solid black;
     }
 
     nav li:first-child {
-        margin-right: auto;
-    }
-
-    nav a {
-        white-space: nowrap;
-        padding: 10px;
+        margin-right: 0;
     }
 }
 
