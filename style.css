@@ -568,18 +568,4 @@ header {
     margin-top: 15px;
     font-style: italic;
 }
-@media (max-width: 768px) {
 
-    body {
-        width: 100%;
-        overflow-x: hidden;
-    }
-
-    header,
-    section {
-        width: 100%;
-        max-width: 100%;
-        margin: 1rem 0;
-        padding: 1rem;
-        box-sizing: border-box;
-    }
